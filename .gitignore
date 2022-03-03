@@ -1,0 +1,15 @@
+.idea
+/.idea
+.idea/
+/.idea/
+app/__pycache__/
+app/**/__pycache__/
+__pycache__/config.cpython-39.pyc
+migrations/__pycache__
+migrations/versions/__pycache__/3d9543f767e4_category_post_hash_id.cpython-39.pyc
+*.py[cod]
+docker-compose.ymlE
+.github/.DS_Store
+node_modules
+package-lock.json
+yarn.lock
