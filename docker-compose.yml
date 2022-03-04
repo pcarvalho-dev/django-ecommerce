@@ -1,23 +1,23 @@
-version: "3.9"
+version: "3.7"
 
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-  web:
+  api:
     build: .
     volumes:
       - ./:/application
     ports:
       - "8000:8000"
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
     depends_on:
-      - db
+      - database
+    env_file: .env
+    restart: always
+
+  database:
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./initdb/dumps:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ecommerce_db
